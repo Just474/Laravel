@@ -8,6 +8,18 @@
     <title>Document</title>
 </head>
 <body>
+<header>
+    @if(Route::has('login.login'))
+        @auth
+            <a href={{ route('login.logout') }}>Выйти</a>
+        @else
+            <a href={{ route('login.login') }}>Войти</a>
+            @if(Route::has('login.register'))
+                <a href={{ route('login.register') }}>Зарегистрироваться</a>
+            @endif
+        @endauth
+    @endif
+</header>
 <section>
     <form method="get" action={{ route('products.index') }}>
         @csrf

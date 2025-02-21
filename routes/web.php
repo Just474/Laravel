@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -10,6 +11,12 @@ Route::post('/products', [ProductController::class, 'store'])->name('products.st
 Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::patch('/products/{id}', [ProductController::class, 'update'])->name('products.update');
+
+Route::get('/login', [LoginController::class, 'login'])->name('login.login');
+Route::get('/register', [LoginController::class, 'register'])->name('login.register');
+Route::post('/login', [LoginController::class, 'authentication'])->name('login.authentication');
+Route::post('/register', [LoginController::class, 'userCreate'])->name('login.userCreate');
+Route::get('/logout', [LoginController::class, 'logout'])->name('login.logout');
 
 
 
